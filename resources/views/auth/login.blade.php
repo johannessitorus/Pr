@@ -1,69 +1,96 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> {{-- Menggunakan helper Laravel untuk lang --}}
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - {{ config('app.name', 'Laravel') }}</title>
-    <!-- Tambahkan CSS Anda di sini -->
-    {{-- <link rel="stylesheet" href="{{ asset('css/your-custom-styles.css') }}"> --}}
-    <style> /* Contoh CSS inline sederhana */
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f3f4f6; margin:0; }
-        .login-container { background-color: white; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .form-group { margin-bottom: 1rem; }
-        label { display: block; margin-bottom: 0.5rem; }
-        input[type="email"], input[type="password"], input[type="text"] { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 0.25rem; box-sizing: border-box; }
-        .error-message { color: red; font-size: 0.875rem; margin-top: 0.25rem; }
-        button { background-color: #4CAF50; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.25rem; cursor: pointer; }
-        button:hover { background-color: #45a049; }
-        .alert-danger ul { list-style-type: none; padding: 0; color: red; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="{{ asset('foto/del.png') }}"> {{-- type="image/png" lebih tepat --}}
+    <title>Login - SIPA {{-- Atau {{ config('app.name', 'SIPA') }} --}}</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    {{-- Tambahkan link untuk Bootstrap Icons jika Anda menggunakannya --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        /* Tambahan CSS untuk error message jika tidak ada di login.css */
+        .field .error-message {
+            color: red;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: block; /* agar muncul di baris baru */
+        }
+        .alert.alert-danger ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            color: red;
+        }
+        .alert.alert-danger {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid red;
+            border-radius: 0.25rem;
+            background-color: #f8d7da;
+        }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login Aplikasi</h2>
+    <div class="main-container">
+        <div class="form-wrapper">
+            <img src="{{ asset('foto/del.png') }}" alt="Logo IT Del"> {{-- Alt text yang lebih deskriptif --}}
+            <h1>Institut Teknologi Del</h1>
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                    @foreach ($errors->all() as $item)
+                        <li>{{ $item }}</li>
                     @endforeach
-                </ul>
-            </div>
-        @endif
+                    </ul>
+                </div>
+            @endif
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <div class="field">
+                    {{-- ASUMSI: Anda login menggunakan email. Jika username, ganti type="email" ke "text" dan name="email" ke "username" --}}
+                    <input class="inp" type="email" value="{{ old('email') }}" name="email" id="email" required autocomplete="email" autofocus>
+                    <label class="label" for="email">Alamat Email</label> {{-- Sesuaikan label --}}
+                    <span class="bi bi-person"></span> {{-- Atau bi-envelope jika email --}}
+                    @error('email')
+                        <span class="error-message">{{ $message }}</span>
+                    @enderror
+                </div>
 
-            <div class="form-group">
-                <label for="email">Alamat Email</label> {{-- Atau Username --}}
-                <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
-                @error('email')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            </div>
+                <div class="field">
+                    <input class="inp" type="password" name="password" id="password" required autocomplete="current-password">
+                    <label class="label" for="password">Password</label>
+                    <span class="toggle-pass bi bi-eye"></span>
+                    @error('password')
+                        <span class="error-message">{{ $message }}</span>
+                    @enderror
+                </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input id="password" type="password" name="password" required>
-                @error('password')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
-            </div>
+                <div class="action">
+                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <label for="remember">Ingat Saya</label> {{-- Sesuaikan teks --}}
+                </div>
 
-            <div class="form-group">
-                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label for="remember" style="display: inline-block; margin-bottom:0;">Ingat Saya</label>
-            </div>
+                <input type="submit" value="Login" id="login-btn">
+            </form>
+        </div>
+        <div class="bg"></div>
+   </div>
 
-            <div class="form-group">
-                <button type="submit">Login</button>
-            </div>
-        </form>
-        {{--
-        <p>Belum punya akun? <a href="{{ route('register') }}">Daftar</a></p>
-        <p><a href="{{ route('password.request') }}">Lupa Password?</a></p>
-        --}}
-    </div>
+<script>
+    const passwordInput = document.querySelector('#password'); // Lebih spesifik menargetkan input password
+    const togglePasswordIcon = document.querySelector('.toggle-pass');
+
+    if (togglePasswordIcon && passwordInput) { // Pastikan elemen ada
+        togglePasswordIcon.addEventListener('click', () => {
+            togglePasswordIcon.classList.toggle('bi-eye-slash');
+            togglePasswordIcon.classList.toggle('bi-eye');
+            passwordInput.type = (passwordInput.type === 'password') ? 'text' : 'password';
+        });
+    }
+</script>
 </body>
 </html>

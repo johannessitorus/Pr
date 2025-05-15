@@ -13,7 +13,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 
 
-class AdminDosenController extends Controller
+class DosenController extends Controller
 {
     /**
      * Display a listing of the resource.
