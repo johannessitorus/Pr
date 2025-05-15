@@ -2,7 +2,7 @@
 @extends('layouts.app') {{-- Sesuaikan dengan nama layout Anda --}}
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <h1>Manajemen Prodi</h1>
     <a href="{{ route('admin.prodi.create') }}" class="btn btn-primary mb-3">Tambah Prodi</a>
 

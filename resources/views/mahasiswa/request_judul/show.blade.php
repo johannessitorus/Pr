@@ -3,7 +3,7 @@
 @section('title', 'Detail Pengajuan Judul')
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 mt-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Detail Pengajuan Judul</h1>
         <a href="{{ route('mahasiswa.request-judul.index') }}" class="btn btn-outline-secondary">

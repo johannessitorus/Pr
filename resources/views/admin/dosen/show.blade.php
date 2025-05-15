@@ -3,7 +3,7 @@
 @section('title', 'Detail Dosen: ' . ($dosen->user->name ?? 'N/A'))
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <h1 class="h3 mb-2 text-gray-800">Detail Dosen</h1>
     <p class="mb-4">Informasi lengkap mengenai dosen {{ $dosen->user->name ?? 'N/A' }}.</p>
 

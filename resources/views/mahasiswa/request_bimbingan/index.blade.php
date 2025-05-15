@@ -3,7 +3,7 @@
 @section('title', 'Daftar Pengajuan Bimbingan')
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 mt-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Daftar Pengajuan Bimbingan Anda</h1>
         {{-- Tombol Ajukan Baru hanya muncul jika mahasiswa punya dosen pembimbing --}}

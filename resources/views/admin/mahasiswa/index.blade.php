@@ -3,7 +3,7 @@
 @section('title', 'Manajemen Mahasiswa')
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="mb-0">Manajemen Mahasiswa</h1>
         <a href="{{ route('admin.mahasiswa.create') }}" class="btn btn-primary">
@@ -36,7 +36,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>No.</th>
                                 <th>Nama</th>
                                 <th>NIM</th>
                                 <th>Email</th>

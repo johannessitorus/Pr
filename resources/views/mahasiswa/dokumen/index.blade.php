@@ -3,7 +3,7 @@
 @section('title', 'Daftar Dokumen Proyek Akhir Saya')
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 mt-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="mb-0 h3">Dokumen Proyek Akhir Saya</h1>
         <a href="{{ route('mahasiswa.dokumen.create') }}" class="btn btn-primary btn-sm">
@@ -27,7 +27,7 @@
                     <table class="table table-hover align-middle">
                         <thead class="table-light">
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No.</th>
                                 <th scope="col">Jenis Dokumen</th>
                                 <th scope="col">Nama File</th>
                                 <th scope="col">Versi</th>

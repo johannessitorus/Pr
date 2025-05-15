@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <h1>Edit Prodi: {{ $prodi->nama_prodi }}</h1>
     <form action="{{ route('admin.prodi.update', $prodi->id) }}" method="POST">
         @csrf

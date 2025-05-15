@@ -14,12 +14,12 @@
     <div class="main-content">
 
         {{-- Baris 1: Welcome Card & Status Proyek Akhir --}}
-        <div class="row mb-4">
+        <div class="row mb-2">
             {{-- Kolom Kiri: Welcome Card --}}
             <div class="col-md-6 mb-4 mb-md-0">
                 <div class="card welcome-card shadow-sm h-100">
                     <div class="card-body d-flex">
-<img src="{{ asset('foto/biodata.PNG') }}" class="baground-light me-3" style="width: 150px; height: auto;">                        <div>
+                    <img src="{{ asset('foto/biodata.PNG') }}" class="baground-light me-3" style="width: 150px; height: auto;">                        <div>
                             <h2><b>Selamat Datang, SIPA Vokasi <br>IT DEL,{{ Auth::user()->name ?? 'Pengguna' }}!</b></h2>
                             <p class="text-muted">Data Anda telah terverifikasi:</p>
                             <p>Nama :{{ Auth::user()->name ?? 'Pengguna' }}
@@ -223,66 +223,85 @@
 
 @push('styles')
 <style>
-    .dashboard-container .main-content {
-        /* padding: 1rem; */
-    }
+        /* Penting: Pastikan nilai padding-top ini sesuai dengan tinggi navbar Anda */
+        body {
+            padding-top: 65px; /* CONTOH: GANTI DENGAN TINGGI NAVBAR AKTUAL */
+        }
 
-    .welcome-card .avatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-    .welcome-card .welcome-text h5,
-    .welcome-card .welcome-text h6 {
-        margin-bottom: 0.25rem;
-    }
-    .welcome-card .card-body {
-        align-items: center;
-    }
+        .dashboard-container .main-content {
+            /* padding: 1rem; */
+        }
 
-    /* Styles for a SMALLER calendar in the sidebar */
-    .small-calendar th, .small-calendar td {
-        height: auto;
-        padding: 2px !important;
-        font-size: 0.75rem; /* Font bisa disesuaikan */
-        vertical-align: top;
-    }
-    .small-calendar .day-number {
-        font-weight: bold;
-        font-size: 0.8em;
-        text-align: center;
-        padding: 2px 0;
-        display: block;
-        line-height: 1.2;
-    }
-    .small-calendar .other-month .day-number {
-        color: #ccc !important;
-    }
-    .small-calendar .today {
-        background-color: #007bff !important;
-        color: white !important;
-        border-radius: 50%; /* Bentuk lingkaran */
-        font-weight: bold;
-    }
-    .small-calendar .today .day-number {
-        color: white !important;
-    }
+        .welcome-card .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .welcome-card .welcome-text h5,
+        .welcome-card .welcome-text h6 {
+            margin-bottom: 0.25rem;
+        }
+        .welcome-card .card-body {
+            align-items: center;
+        }
 
-    .small-calendar-header {
-        font-size: 0.9rem; /* Header bulan dan tahun di kalender kecil */
-        font-weight: 500;
-    }
-    .small-calendar .btn-sm {
-        padding: 0.1rem 0.3rem;
-        font-size: 0.75rem;
-    }
+        /* Styles for a SMALLER calendar in the sidebar */
+        .small-calendar th, .small-calendar td {
+            height: auto;
+            padding: 2px !important;
+            font-size: 0.75rem;
+            vertical-align: top;
+        }
+        .small-calendar .day-number {
+            font-weight: bold;
+            font-size: 0.8em;
+            text-align: center;
+            padding: 2px 0;
+            display: block;
+            line-height: 1.2;
+        }
+        .small-calendar .other-month .day-number {
+            color: #ccc !important;
+        }
+        .small-calendar .today {
+            background-color: #007bff !important;
+            color: white !important;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+        .small-calendar .today .day-number {
+            color: white !important;
+        }
 
-    .x-small {
-        font-size: 0.75rem;
-    }
-    .xx-small {
-        font-size: 0.65rem;
-    }
-</style>
-@endpush
+        .small-calendar-header {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .small-calendar .btn-sm {
+            padding: 0.1rem 0.3rem;
+            font-size: 0.75rem;
+        }
+
+        .x-small {
+            font-size: 0.75rem;
+        }
+        .xx-small {
+            font-size: 0.65rem;
+        }
+
+        .card-sidebar-kalender {
+            min-height: 350px;
+        }
+        .card-sidebar-status {
+            min-height: 200px;
+        }
+        .card-action-item .card-body {
+             display: flex;
+             align-items: center;
+        }
+        .card-action-item .flex-shrink-0 {
+            margin-right: 1rem;
+        }
+    </style>
+    @endpush

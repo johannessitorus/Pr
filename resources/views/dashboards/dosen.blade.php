@@ -3,13 +3,7 @@
 @section('title', 'Dashboard Dosen')
 
 @section('content')
-<div class="container py-4">
-    <div class="row mb-3">
-        <div class="col">
-            <h2>Dashboard Dosen</h2>
-            <p class="lead">Selamat datang kembali, {{ Auth::user()->name ?? 'Dosen' }}!</p>
-        </div>
-    </div>
+<div class="container py-4 mt-5">
 
     <div class="row">
         {{-- Kolom Kiri: Kalender (Tetap Sama seperti sebelumnya) --}}

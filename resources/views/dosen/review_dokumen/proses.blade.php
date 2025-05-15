@@ -3,7 +3,7 @@
 @section('title', 'Proses Review Dokumen')
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="d-flex justify-content-between align-items-center mb-3">

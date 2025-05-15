@@ -3,7 +3,7 @@
 @section('title', 'Detail Mahasiswa')
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="mb-0">Detail Mahasiswa</h1>
         <a href="{{ route('admin.mahasiswa.index') }}" class="btn btn-secondary">Kembali ke Daftar</a>

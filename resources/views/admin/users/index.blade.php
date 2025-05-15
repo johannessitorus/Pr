@@ -12,7 +12,7 @@
 @endpush
 
 @section('content')
-<div class="container-fluid py-4">
+<div class="container-fluid py-4 mt-5">
     <div class="row mb-3 align-items-center">
         <div class="col-md-6">
             <h1 class="mb-0">{{ $pageTitle ?? 'Kelola Pengguna' }}</h1>

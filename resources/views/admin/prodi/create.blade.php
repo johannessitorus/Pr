@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <h1>Tambah Prodi Baru</h1>
     <form action="{{ route('admin.prodi.store') }}" method="POST">
         @csrf

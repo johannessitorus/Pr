@@ -1,4 +1,4 @@
-@extends('layouts.mahasiswa') {{-- Sesuaikan dengan nama layout utama mahasiswa Anda --}}
+@extends('layouts.app') {{-- Sesuaikan dengan nama layout utama mahasiswa Anda --}}
 
 @section('title', 'Detail History Bimbingan')
 

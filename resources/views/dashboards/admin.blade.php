@@ -3,13 +3,7 @@
 @section('title', 'Dashboard Admin')
 
 @section('content')
-<div class="container py-4">
-    <div class="row mb-4">
-        <div class="col">
-            <h1 class="mb-0">Dashboard Admin</h1>
-            <p class="text-muted">Selamat datang, {{ Auth::user()->name ?? 'Administrator' }}!</p>
-        </div>
-    </div>
+<div class="container py-4 mt-5">
 
     {{-- Baris untuk Statistik Ringkas --}}
     <div class="row mb-4">

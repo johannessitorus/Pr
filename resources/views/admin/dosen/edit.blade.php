@@ -3,7 +3,7 @@
 @section('title', 'Edit Data Dosen: ' . ($dosen->user->name ?? 'N/A'))
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <h1 class="h3 mb-2 text-gray-800">Edit Data Dosen</h1>
     <p class="mb-4">Formulir untuk memperbarui data dosen {{ $dosen->user->name ?? 'N/A' }}.</p>
 

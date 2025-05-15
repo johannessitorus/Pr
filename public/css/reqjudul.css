@@ -1,0 +1,143 @@
+:root {
+  --primary-color: #0080ff;
+  --light-gray-bg: #f8f9fa;
+  --border-color: #dee2e6;
+  --text-dark: #000;
+}
+
+.request-judul-header {
+    padding-top: 3rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    padding-bottom: 3rem;
+}
+
+dt.col-sm-3 {
+    color: black;
+  }
+
+dd {
+  color: var(--text-dark);
+}
+
+.class-card-header {
+    color: #000;
+}
+
+/* Forms (create.blade.php, edit.blade.php) */
+form {
+    margin-top: 1.5rem; /* Space above the form */
+}
+
+.form-label {
+    font-weight: 500; /* Slightly bolder labels */
+    margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select {
+    border-radius: 0.375rem; /* Standard Bootstrap radius */
+}
+
+/* Add extra space below the last form group before the buttons */
+form > .mb-3:last-of-type {
+    margin-bottom: 2rem !important;
+}
+
+/* Style form action buttons */
+form button[type="submit"],
+form a.btn {
+    margin-right: 0.5rem; /* Space between buttons */
+    min-width: 80px; /* Minimum width for consistency */
+}
+
+form a.btn-secondary {
+    /* Optional: slightly different style for cancel */
+}
+
+/* Invalid feedback styling (Bootstrap default is usually good) */
+.is-invalid {
+    /* border-color: #dc3545; */ /* Default red */
+}
+.invalid-feedback {
+    /* color: #dc3545; */ /* Default red */
+    font-size: 0.875em;
+}
+
+
+
+.table thead tr {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+
+.table tbody td {
+    vertical-align: middle; /* Align cell content vertically */
+    border-right: 10rem;
+}
+
+/* Style table action buttons */
+.table td .btn {
+    padding: 0.25rem 0.5rem; /* Smaller padding for table buttons */
+    font-size: 0.875rem; /* Smaller font size */
+    margin: 2px 3px; /* Add small spacing around buttons */
+}
+
+.table td form {
+    display: inline-block; /* Keep form buttons inline */
+    margin: 0;
+}
+
+/* Status Badges (Bootstrap handles colors well, just ensure contrast) */
+.badge {
+    font-size: 0.85em; /* Slightly larger badge text */
+    padding: 0.4em 0.6em;
+}
+
+.badge.bg-warning.text-dark {
+    color: #000 !important; /* Ensure black text on yellow for contrast */
+}
+
+/* Pagination (index.blade.php) */
+.pagination {
+    margin-top: 2rem; /* Space above pagination */
+    justify-content: center; /* Center pagination */
+}
+
+
+
+/* Detail View Card (show.blade.php) */
+.card {
+    margin-top: 3rem;
+    border: 1px solid #dee2e6; /* Standard border */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04); /* Softer shadow for cards */
+}
+
+.card-header {
+  background-color: var(--light-gray-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dl-row dt { /* Targeting Bootstrap 5 definition list columns */
+    font-weight: 600; /* Bolder definition term */
+    color: #495057;
+}
+
+.dl-row dd {
+    margin-bottom: 0.75rem; /* Space below definition description */
+    color: #6c757d; /* Slightly lighter text for description */
+}
+
+.dl-row dd:last-of-type {
+    margin-bottom: 0; /* No margin on the last description */
+}
+
+.card-footer {
+    background-color: #f8f9fa; /* Light footer */
+    border-top: 1px solid #dee2e6;
+}
+
+.card-footer .btn {
+    margin-left: 0.5rem; /* Space between buttons in footer */
+}

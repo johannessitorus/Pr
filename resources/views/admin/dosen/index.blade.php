@@ -3,6 +3,7 @@
 @section('title', 'Manajemen Dosen')
 
 @section('content')
+<div class="container-fluid py-4 mt-4">
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Manajemen Dosen</h1>

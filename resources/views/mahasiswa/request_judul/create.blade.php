@@ -3,7 +3,11 @@
 @section('title', 'Ajukan Judul Proyek Akhir Baru')
 
 @section('content')
-<div class="container py-4">
+{{-- Tambahkan margin-top di sini. Anda bisa menggunakan style inline atau kelas Bootstrap --}}
+{{-- Pilihan 1: Style inline (lebih presisi jika navbar punya tinggi spesifik) --}}
+{{-- <div class="card" style="margin-top: 80px;"> --}}
+
+<div class="container py-4 mt-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -77,6 +81,7 @@
         </div>
     </div>
 </div>
+</div> {{-- Ini adalah penutup dari <div class="card mt-5"> --}}
 @endsection
 
 @push('styles')
@@ -85,6 +90,12 @@
     .form-label {
         font-weight: 500;
     }
+    /* Anda juga bisa menambahkan style di sini jika tidak mau inline atau pakai kelas Bootstrap */
+    /*
+    .content-wrapper-for-fixed-navbar {
+        margin-top: 70px; /* Sesuaikan dengan tinggi navbar Anda */
+    }
+    */
 </style>
 @endpush
 

@@ -3,7 +3,7 @@
 @section('title', 'Daftar Pengajuan Judul')
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 mt-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1>Daftar Pengajuan Judul Anda</h1>
         <a href="{{ route('mahasiswa.request-judul.create') }}" class="btn btn-primary">
@@ -20,7 +20,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No.</th>
                                 <th scope="col">Judul Diajukan</th>
                                 <th scope="col">Dosen Tujuan</th>
                                 <th scope="col">Tanggal Pengajuan</th>
