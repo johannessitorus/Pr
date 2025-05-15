@@ -1,0 +1,355 @@
+/* variabel warna (opsional, sesuaikan dengan tema Anda) */
+:root {
+    --card-bg: #ffffff; /* Warna dasar card */
+    --card-border: #e0e0e0; /* Warna border card */
+    --text-primary: #212529; /* Warna teks utama */
+    --text-secondary: #6c757d; /* Warna teks sekunder/abu-abu */
+    --text-heading: #333; /* Warna heading */
+    --primary-color: #0d6efd; /* Warna biru primer (sesuaikan) */
+    --primary-hover: #0b5ed7;
+    --light-gray-bg: #f8f9fa; /* Background abu-abu muda */
+    --placeholder-bg: #e9ecef; /* Background untuk placeholder */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05); /* Shadow tipis */
+    --border-radius: 8px; /* Radius sudut */
+}
+
+/* Container Utama Dashboard */
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap; /* Agar bisa wrap di layar kecil */
+    gap: 25px; /* Jarak antar kolom utama dan sidebar */
+    padding: 20px; /* Padding di sekitar container */
+}
+
+/* Kolom Konten Utama (Kiri) */
+.main-content {
+    flex: 3; /* Ambil porsi lebih besar */
+    min-width: 300px; /* Lebar minimum sebelum wrap */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Jarak antar elemen di kolom utama */
+}
+
+/* Kolom Sidebar Kanan */
+.right-sidebar {
+    flex: 1; /* Ambil porsi lebih kecil */
+    min-width: 250px; /* Lebar minimum */
+}
+
+/* Styling Card Dasar */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    width: 100%; /* Agar mengisi parent flex/grid */
+    box-sizing: border-box;
+}
+
+/* 1. Welcome Card */
+.welcome-card {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Jarak antara avatar dan teks */
+    background-color: var(--light-gray-bg); /* Background abu-abu sesuai gambar */
+}
+
+.welcome-card .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover; /* Agar gambar tidak penyok */
+    border: 2px solid var(--card-border); /* Optional: border tipis di avatar */
+}
+
+.welcome-card .welcome-text h2 {
+    margin: 5px 0 0 0;
+    font-size: 1.8rem; /* Ukuran font besar */
+    font-weight: bold;
+    color: var(--text-heading);
+}
+
+.welcome-card .welcome-text p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.welcome-card .welcome-text p:first-child {
+    font-weight: 500; /* Sedikit tebal untuk nama */
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+
+/* 2. Project Statistics */
+.section-title {
+    margin-top: 0; /* Hapus margin atas jika elemen pertama */
+    margin-bottom: 0; /* Margin bawah sebelum card */
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stats-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antar stat card */
+}
+
+.stat-card {
+    display: flex;
+    justify-content: space-between; /* Icon+Text di kiri, Button di kanan */
+    align-items: center;
+    gap: 15px; /* Jarak antara group info dan button */
+    padding: 15px 20px; /* Padding lebih kecil */
+}
+
+.stat-card-info {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Jarak antara icon dan text */
+}
+
+.stat-icon img {
+    width: 35px; /* Sesuaikan ukuran icon */
+    height: auto;
+    flex-shrink: 0; /* Agar icon tidak mengecil */
+}
+
+.stat-text h4 {
+    margin: 0 0 4px 0;
+    font-size: 1rem;
+    font-weight: 600; /* Sedikit tebal */
+    color: var(--text-primary);
+}
+
+.stat-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Styling Tombol Dasar */
+.btn {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap; /* Agar teks tombol tidak wrap */
+    flex-shrink: 0; /* Tombol jangan mengecil */
+}
+
+.btn-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* 3. Action Cards */
+.action-cards-container {
+    display: flex;
+    gap: 20px; /* Jarak antar action card */
+    flex-wrap: wrap; /* Wrap jika layar kecil */
+}
+
+.action-card {
+    flex: 1; /* Usahakan lebar sama */
+    min-width: 200px; /* Lebar minimum sebelum wrap */
+    background-color: var(--light-gray-bg); /* Background abu-abu sesuai gambar */
+    padding: 25px 20px; /* Padding lebih besar */
+    text-align: center;
+    border-color: #d3d9df; /* Border sedikit beda? */
+}
+
+.action-link {
+    text-decoration: none;
+    color: inherit; /* Ambil warna teks dari parent */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Jarak antara icon dan teks */
+}
+
+.action-icon img {
+    width: 45px; /* Ukuran icon lebih besar */
+    height: auto;
+    margin-bottom: 5px; /* Sedikit jarak di bawah icon */
+}
+
+.action-text h3 {
+    margin: 5px 0 5px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-heading);
+}
+
+.action-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+
+/* 4. Calendar Card (Right Sidebar) */
+.calendar-card {
+    padding: 20px;
+    background-color: var(--light-gray-bg); /* Background abu-abu */
+}
+
+.calendar-card h4 {
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.calendar-content {
+    min-height: 250px; /* Tinggi minimal placeholder kalender */
+    background-color: var(--placeholder-bg); /* Warna placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Responsiveness (Contoh Sederhana) */
+@media (max-width: 992px) {
+    .main-content {
+        flex: 2; /* Sedikit lebih kecil di layar medium */
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column; /* Susun kolom secara vertikal */
+    }
+    .main-content, .right-sidebar {
+        flex: none; /* Reset flex grow/shrink */
+        width: 100%; /* Ambil lebar penuh */
+    }
+    .stat-card {
+        flex-direction: column; /* Susun info dan tombol secara vertikal */
+        align-items: flex-start; /* Rata kiri */
+        gap: 10px;
+    }
+     .stat-card .btn {
+        margin-top: 10px; /* Jarak tombol dari teks */
+        align-self: flex-start; /* Tombol rata kiri */
+    }
+    .action-cards-container {
+        flex-direction: column; /* Action card juga vertikal */
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-card {
+        flex-direction: column; /* Avatar di atas teks */
+        text-align: center;
+    }
+     .welcome-card .welcome-text {
+        align-items: center;
+    }
+    .stat-card-info {
+         flex-direction: column; /* Icon di atas teks di layar sangat kecil */
+         align-items: flex-start;
+         text-align: left;
+         width: 100%; /* Ambil lebar penuh */
+    }
+     .stat-icon {
+        margin-bottom: 5px;
+    }
+}
+
+/* public/css/dashboard.css */
+
+/* --- Kalender Widget Styles --- */
+.calendar-card {
+    /* Mungkin Anda sudah punya style card dasar, tambahkan/sesuaikan jika perlu */
+    background-color: var(--light-gray-bg); /* Sesuaikan jika warna card beda */
+}
+
+.calendar-card h4 {
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 0 20px; /* Samakan padding dengan card lain jika perlu */
+    margin-top: 20px; /* Samakan margin atas */
+}
+
+.calendar-content {
+    padding: 10px; /* Beri sedikit padding di dalam card sebelum kalender */
+    background-color: white; /* Background putih untuk kalender */
+    border-radius: 0 0 var(--border-radius) var(--border-radius); /* Sudut bawah card */
+    min-height: 300px; /* Beri tinggi minimum agar card tidak kolaps sebelum kalender load */
+}
+
+/* Target elemen kalender itu sendiri */
+#calendar {
+    max-width: 100%; /* Pastikan tidak meluber */
+    margin: 0 auto;
+    font-size: 0.88em; /* Sedikit kecilkan font kalender agar muat */
+    box-sizing: border-box; /* Pastikan padding/border terhitung benar */
+}
+
+/* Style header kalender (prev, next, title, today) */
+#calendar .fc-header-toolbar {
+    margin-bottom: 0.8em !important; /* Kurangi jarak bawah header */
+    font-size: 0.95em; /* Kecilkan font header */
+    padding: 0 5px; /* Sedikit padding horizontal jika terlalu mepet */
+}
+
+/* Style tombol di header kalender */
+#calendar .fc-button {
+    padding: 0.3em 0.6em;
+    font-size: 0.9em; /* Kecilkan tombol */
+    background-color: var(--primary-color); /* Samakan warna tombol (opsional) */
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: none;
+    text-transform: capitalize; /* Tombol Today, bukan TODAY */
+}
+#calendar .fc-button:not(:disabled):hover {
+     background-color: var(--primary-hover); /* Warna hover */
+     border-color: var(--primary-hover);
+}
+#calendar .fc-button .fc-icon { /* Kecilkan icon di tombol */
+    font-size: 1.1em;
+    line-height: 1; /* Pusatkan icon */
+    height: auto;
+    width: auto;
+}
+
+/* Style nomor tanggal */
+#calendar .fc-daygrid-day-number {
+    padding: 4px;
+    font-weight: 500;
+}
+
+/* Style nama hari (Sen, Sel, ...) */
+#calendar .fc-col-header-cell-cushion {
+  padding: 5px 2px;
+  font-size: 0.9em;
+}
+
+/* --- Akhir Kalender Widget Styles --- */
