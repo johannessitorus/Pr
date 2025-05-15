@@ -14,6 +14,16 @@
                     @if(session('error'))
                         <div class="alert alert-danger">{{ session('error') }}</div>
                     @endif
+                    {{-- Menampilkan semua error validasi di atas form (opsional, karena sudah ada per-field) --}}
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <form action="{{ route('admin.dosen.store') }}" method="POST">
                         @csrf
@@ -27,6 +37,18 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-6"> {{-- Field Username Ditambahkan di sini --}}
+                                <div class="form-group">
+                                    <label for="username">Username <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" required>
+                                    @error('username')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="email">Email <span class="text-danger">*</span></label>
@@ -36,9 +58,6 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="password">Password <span class="text-danger">*</span></label>
@@ -48,17 +67,15 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="password_confirmation">Konfirmasi Password <span class="text-danger">*</span></label>
                                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                                 </div>
                             </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nidn">NIDN/NIP <span class="text-danger">*</span></label>
@@ -68,31 +85,42 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="prodi_id">Program Studi <span class="text-danger">*</span></label>
                                     <select class="form-control @error('prodi_id') is-invalid @enderror" id="prodi_id" name="prodi_id" required>
                                         <option value="">Pilih Program Studi</option>
-                                        @foreach($prodis as $prodi)
-                                            <option value="{{ $prodi->id }}" {{ old('prodi_id') == $prodi->id ? 'selected' : '' }}>
-                                                {{ $prodi->nama_prodi }}
-                                            </option>
-                                        @endforeach
+                                        @if(isset($prodis) && $prodis->count() > 0)
+                                            @foreach($prodis as $prodi)
+                                                <option value="{{ $prodi->id }}" {{ old('prodi_id') == $prodi->id ? 'selected' : '' }}>
+                                                    {{ $prodi->nama_prodi }}
+                                                </option>
+                                            @endforeach
+                                        @else
+                                            <option value="" disabled>Data prodi tidak tersedia</option>
+                                        @endif
                                     </select>
                                     @error('prodi_id')
                                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="spesialisasi">Spesialisasi</label>
+                                    <input type="text" class="form-control @error('spesialisasi') is-invalid @enderror" id="spesialisasi" name="spesialisasi" value="{{ old('spesialisasi') }}">
+                                    @error('spesialisasi')
+                                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="spesialisasi">Spesialisasi</label>
-                            <input type="text" class="form-control @error('spesialisasi') is-invalid @enderror" id="spesialisasi" name="spesialisasi" value="{{ old('spesialisasi') }}">
-                            @error('spesialisasi')
-                                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
-                            @enderror
-                        </div>
 
                         <div class="mt-3">
                             <button type="submit" class="btn btn-primary">Simpan Data Dosen</button>
