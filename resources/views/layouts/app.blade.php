@@ -104,7 +104,6 @@
                                         <li><a class="dropdown-item {{ request()->routeIs('admin.prodi*') ? 'active' : '' }}" href="{{ route('admin.prodi.index') }}">Prodi</a></li>
                                         <li><a class="dropdown-item {{ request()->routeIs('admin.jenis-dokumen*') ? 'active' : '' }}" href="{{ route('admin.jenis-dokumen.index') }}">Jenis Dokumen</a></li>
                                         <li><a class="dropdown-item {{ request()->routeIs('admin.users*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">Pengguna</a></li>
-                                        <li><a class="dropdown-item {{ request()->routeIs('admin.log-activities*') ? 'active' : '' }}" href="{{ route('admin.log-activities.index') }}">Log Aktivitas</a></li>
                                     </ul>
                                 </li>
                             @elseif(Auth::user()->role === 'dosen')
@@ -249,7 +248,7 @@
 
         <footer class="footer mt-auto">
             <div class="container">
-                <span>© {{ date('Y') }} {{ config('app.name', 'Laravel') }}. All rights reserved.</span>
+                <span>© {{ date('Y') }} {{ config('', 'SISTEM INFORMASI PROYEK AHKIR') }}. Vokasi IT DEL</span>
             </div>
         </footer>
     </div>

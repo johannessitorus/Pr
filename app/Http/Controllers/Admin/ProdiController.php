@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule; // <-- TAMBAHKAN INI
+
 
 class ProdiController extends Controller
 {
@@ -30,8 +32,8 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-        'kode_prodi' => 'required|string|max:20|unique:db_pa1_prodi,kode_prodi',
+        $validatedData = $request->validate([
+        'kode_prodi' => 'required|string|max:20|unique:prodi,kode_prodi,',
         'nama_prodi' => 'required|string|max:100',
         'fakultas' => 'required|string|max:100',
     ]);
@@ -63,16 +65,30 @@ class ProdiController extends Controller
      */
     public function update(Request $request, Prodi $prodi)
     {
-        $request->validate([
-        'kode_prodi' => 'required|string|max:20|unique:db_pa1_prodi,kode_prodi,' . $prodi->id,
-        'nama_prodi' => 'required|string|max:100',
-        'fakultas' => 'required|string|max:100',
-    ]);
+        // Validasi data
+        $validatedData = $request->validate([
+            // SEBELUM (MUNGKIN INI PENYEBABNYA JIKA ANDA MENULIS NAMA TABEL SECARA MANUAL DAN SALAH)
+            // 'kode_prodi' => 'required|string|max:10|unique:db_pa1_prodi,kode_prodi,' . $prodi->id,
 
-    $prodi->update($request->all());
+            // SESUDAH (PILIHAN 1: Menggunakan nama tabel dari model Anda)
+            'kode_prodi' => 'required|string|max:20|unique:prodi,kode_prodi,' . $prodi->id, // Gunakan 'prodi' sesuai $table di model
+            // ATAU (PILIHAN 2: Cara yang lebih disarankan, menggunakan class Model)
+            // 'kode_prodi' => [
+            //     'required',
+            //     'string',
+            //     'max:20', // Sesuaikan max length dengan migrasi
+            //     Rule::unique(Prodi::class)->ignore($prodi->id),
+            // ],
+            'nama_prodi' => 'required|string|max:100', // Sesuaikan max length dengan migrasi
+            'fakultas'   => 'nullable|string|max:100', // Sesuaikan max length dengan migrasi
+        ]);
 
-    return redirect()->route('admin.prodi.index')
-                     ->with('success', 'Prodi berhasil diperbarui.');
+        try {
+            $prodi->update($validatedData);
+            return redirect()->route('admin.prodi.index')->with('success', 'Prodi berhasil diperbarui.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal memperbarui prodi: ' . $e->getMessage())->withInput();
+        }
     }
 
     /**
@@ -83,7 +99,7 @@ class ProdiController extends Controller
         // Tambahkan validasi/pengecekan jika prodi masih terpakai oleh mahasiswa/dosen
     // sebelum menghapus untuk menjaga integritas data.
     // Contoh sederhana (Anda mungkin perlu logika lebih kompleks):
-    if ($prodi->mahasiswas()->count() > 0 || $prodi->dosens()->count() > 0) {
+    if ($prodi->mahasiswa()->count() > 0 || $prodi->dosen()->count() > 0) {
         return redirect()->route('admin.prodi.index')
                          ->with('error', 'Prodi tidak dapat dihapus karena masih digunakan.');
     }

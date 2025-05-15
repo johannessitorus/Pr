@@ -101,10 +101,7 @@
                     </a>
                     <a href="{{ route('admin.users.index') }}" class="list-group-item list-group-item-action">
                         <i class="fas fa-users-cog me-2 text-info"></i> Kelola Pengguna (Mahasiswa, Dosen, Admin)
-                    </a>
-                    <a href="{{ route('admin.log-activities.index') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-clipboard-list me-2 text-warning"></i> Lihat Log Aktivitas Sistem
-                    </a>
+                    </a>    
                     {{-- Tambahkan link manajemen lainnya --}}
                 </div>
             </div>

@@ -30,12 +30,16 @@
             border-radius: 0.25rem;
             background-color: #f8d7da;
         }
+        .logo-besar {
+            width: 200px; /* Ganti ukuran sesuai keinginan */
+            height: auto; /* Menjaga rasio aspek */
+        }
     </style>
 </head>
 <body>
     <div class="main-container">
         <div class="form-wrapper">
-            <img src="{{ asset('foto/del.png') }}" alt="Logo IT Del"> {{-- Alt text yang lebih deskriptif --}}
+            <img src="{{ asset('foto/sipa.png') }}" alt="Logo IT Del" class="logo-besar">
             <h1>Institut Teknologi Del</h1>
 
             @if($errors->any())

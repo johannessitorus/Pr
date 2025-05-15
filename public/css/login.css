@@ -5,13 +5,15 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    min-width: 100vh;
-
+    width: 100%;
+    box-sizing: border-box;
 }
 
-img {
+img { /* Gaya umum untuk gambar, mungkin ini adalah logo Anda */
     width: 150px;
     height: 150px;
+    /* Pastikan tidak ada margin yang mengganggu (mis. margin-left: 0;) */
+    /* Jika ini logo di dalam form, centering akan diurus oleh .form-wrapper */
 }
 
 h1 {
@@ -29,25 +31,30 @@ a:hover {
 
 .form-wrapper {
     width: 420px;
-    height: 500px;
+    min-height: 500px;
     z-index: 1;
     color: white;
-    text-align: center;
+    text-align: center; /* Untuk teks di dalam elemen anak */
     border-radius: 10px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     padding: 20px 20px 5px;
     backdrop-filter: blur(50px);
     border: 1px solid #ffffff4f;
     box-shadow: 0px 0px 20px 0px #00000070;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* <<< INI PERUBAHAN KUNCI untuk menengahkan item anak */
 }
 
 .form-title {
     font-size: 30px;
+    margin-top: 10px; /* Tambahkan sedikit margin jika perlu antara logo dan judul */
 }
 
 .field {
     position: relative;
     margin-top: 45px;
+    width: 100%; /* Pastikan field mengambil lebar penuh dari container yang sudah di-center */
 }
 
 .field .bi {
@@ -59,6 +66,13 @@ a:hover {
 
 .toggle-pass {
     cursor: pointer;
+}
+
+form { /* Tambahkan ini jika form adalah pembungkus input */
+    width: 100%; /* Pastikan form mengambil lebar penuh */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Menengahkan konten form jika diperlukan */
 }
 
 form input {
@@ -74,10 +88,13 @@ form input {
     outline: none;
     padding: 0 25px 5px 0;
     border-bottom: 1px solid #ffffff54;
+    box-sizing: border-box;
 }
+
 .icon {
     color: white;
 }
+
 .label {
     position: absolute;
     left: 0px;
@@ -101,6 +118,8 @@ form input {
     color: #dddddd;
     user-select: none;
     margin-top: 10px;
+    width: 100%; /* Pastikan action mengambil lebar penuh */
+    box-sizing: border-box;
 }
 
 .action label {
@@ -121,8 +140,9 @@ form input {
     border-radius: 5px;
     margin-top: 40px;
     font-size: 18px;
-    font-family: 'Calibri';
+    font-family: 'Calibri', sans-serif;
     padding: 5px 0;
+    border: none;
 }
 
 .separator {
@@ -131,6 +151,7 @@ form input {
     align-items: center;
     gap: 10px;
     margin-top: 30px;
+    width: 100%; /* Pastikan separator mengambil lebar penuh */
 }
 
 .separator::before,
@@ -146,6 +167,7 @@ form input {
     gap: 12px;
     justify-content: center;
     margin-top: 15px;
+    width: 100%; /* Pastikan alternative mengambil lebar penuh */
 }
 
 .alternative button {
@@ -167,6 +189,8 @@ form input {
 .bottom {
     margin-top: 35px;
     font-size: 15px;
+    padding-bottom: 15px;
+    width: 100%; /* Pastikan bottom mengambil lebar penuh */
 }
 
 .bg {
@@ -180,4 +204,84 @@ form input {
     background-image: url('/foto/RiyanthiSianturi_ITDEL_11.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* --- Responsive Adjustments for Mobile Phones --- */
+@media (max-width: 600px) {
+    .main-container {
+        align-items: flex-start;
+        padding: 20px 10px;
+    }
+
+    img { /* Gaya untuk logo di mobile */
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px; /* Jarak bawah logo */
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .form-wrapper {
+        width: 90%;
+        max-width: 380px;
+        height: auto;
+        min-height: 0;
+        padding: 20px 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        /* align-items: center; sudah diatur di rule utama .form-wrapper */
+    }
+
+    .form-title {
+        font-size: 26px;
+    }
+
+    .field {
+        margin-top: 35px;
+    }
+
+    .inp {
+        font-size: 15px;
+    }
+
+    .inp:focus~label,
+    .inp:valid~label {
+        font-size: 14px;
+    }
+
+    .action {
+        font-size: 14px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    .action a {
+        padding: 5px 0;
+    }
+
+    #login-btn {
+        margin-top: 30px;
+        font-size: 17px;
+        padding: 8px 0;
+    }
+
+    .separator {
+        margin-top: 25px;
+    }
+    .separator::before,
+    .separator::after {
+        width: 35%;
+    }
+
+    .alternative {
+        margin-top: 20px;
+    }
+
+    .bottom {
+        margin-top: 25px;
+        font-size: 14px;
+    }
 }
