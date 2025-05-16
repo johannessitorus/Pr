@@ -85,56 +85,7 @@
         </div>
     </div>
 
-    @if($requestJudul->status == 'pending')
-    <div class="card shadow-sm">
-        <div class="card-header">
-            <h5 class="mb-0">Proses Pengajuan</h5>
-        </div>
-        <div class="card-body">
-            <p>Silakan berikan keputusan untuk pengajuan judul ini.</p>
-            <div class="row">
-                {{-- Form Approve --}}
-                <div class="col-md-6 border-end">
-                    <h6 class="text-success">Setujui Pengajuan</h6>
-                    <form method="POST" action="{{ route('dosen.request-judul.approve', $request->id) }}" id="form-approve">
-                        @csrf
-                        @method('PATCH')
-                        <div class="mb-3">
-                            <label for="catatan_dosen_approve" class="form-label">Catatan Tambahan (Opsional):</label>
-                            <textarea name="catatan_dosen" id="catatan_dosen_approve" class="form-control" rows="3" placeholder="Mis: Judul menarik, silakan lanjutkan ke tahap berikutnya."></textarea>
-                            @error('catatan_dosen', 'approve') {{-- Error bag for specific form --}}
-                                <div class="text-danger mt-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-check"></i> Setujui Judul
-                        </button>
-                    </form>
-                </div>
-
-                {{-- Form Reject --}}
-                <div class="col-md-6">
-                    <h6 class="text-danger">Tolak Pengajuan</h6>
-                    <form method="POST" action="{{ route('dosen.request-judul.reject', $request->id) }}" id="form-reject">
-                        @csrf
-                        @method('PATCH')
-                        <div class="mb-3">
-                            <label for="catatan_dosen_reject" class="form-label">Alasan Penolakan <span class="text-danger">*</span>:</label>
-                            <textarea name="catatan_dosen" id="catatan_dosen_reject" class="form-control" rows="3" placeholder="Mis: Judul sudah pernah ada, topik kurang relevan, metodologi tidak sesuai." required></textarea>
-                            @error('catatan_dosen', 'reject') {{-- Error bag for specific form --}}
-                                <div class="text-danger mt-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <button type="submit" class="btn btn-danger">
-                            <i class="fas fa-times"></i> Tolak Judul
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endif
-
+    
 </div>
 @endsection
 
