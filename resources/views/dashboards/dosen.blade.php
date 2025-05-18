@@ -82,10 +82,10 @@
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="{{ route('dosen.request-judul.index') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-file-alt me-2"></i>Request Judul Masuk
+                        <i class="fas fa-file-alt me-2"></i>Daftar Request Judul
                     </a>
                     <a href="{{ route('dosen.request-bimbingan.index') }}" class="list-group-item list-group-item-action">
-                        <i class="fas fa-comments me-2"></i>Request Bimbingan Masuk
+                        <i class="fas fa-comments me-2"></i>Daftar Request Bimbingan
                     </a>
                     <a href="{{ route('dosen.history-bimbingan.index') }}" class="list-group-item list-group-item-action">
                         <i class="fas fa-history me-2"></i>Manajemen Riwayat Bimbingan

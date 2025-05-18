@@ -117,10 +117,13 @@
                             @elseif(Auth::user()->role === 'mahasiswa')
                                 {{-- Tambahkan navigasi spesifik mahasiswa di navbar jika perlu --}}
                                 <li class="nav-item">
-                                    <a class="nav-link {{ request()->routeIs('mahasiswa.request-judul*') ? 'active' : '' }}" href="{{ route('mahasiswa.request-judul.index') }}">Request Judul</a>
+                                    <a class="nav-link {{ request()->routeIs('mahasiswa.request-judul*') ? 'active' : '' }}" href="{{ route('mahasiswa.request-judul.index') }}">Pengajuan Judul</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ request()->routeIs('mahasiswa.dokumen*') ? 'active' : '' }}" href="{{ route('mahasiswa.dokumen.index') }}">Dokumen Saya</a>
+                                    <a class="nav-link {{ request()->routeIs('mahasiswa.request-bimbingan*') ? 'active' : '' }}" href="{{ route('mahasiswa.request-bimbingan.index') }}">Pengajuan Bimbingan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request()->routeIs('mahasiswa.dokumen*') ? 'active' : '' }}" href="{{ route('mahasiswa.dokumen.index') }}">Dokumen Proyek Akhir</a>
                                 </li>
                             @endif
                         @endauth

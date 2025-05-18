@@ -20,12 +20,12 @@
                 <div class="card welcome-card shadow-sm h-100">
                     <div class="card-body d-flex">
                     <img src="{{ asset('foto/biodata.PNG') }}" class="baground-light me-3" style="width: 150px; height: auto;">                        <div>
-                            <h2><b>Selamat Datang, SIPA Vokasi <br>IT DEL,{{ Auth::user()->name ?? 'Pengguna' }}!</b></h2>
+                            <h2><b>Selamat Datang, SIPA Vokasi <br>IT DEL, {{ Auth::user()->name ?? 'Pengguna' }}!</b></h2>
                             <p class="text-muted">Data Anda telah terverifikasi:</p>
                             <p>Nama :{{ Auth::user()->name ?? 'Pengguna' }}
                             <br>NIM :{{ Auth::user()->mahasiswa->nim }}
                             <br>Prodi: {{ Auth::user()->mahasiswa->prodi->nama_prodi ?? 'N/A' }}</p>
-                            <p class="text-muted">Manfaatkan SIPA untuk perjalanan akademik yang lebih terorganisir.</p>
+                            <p class="text-muted">Manfaatkan SIPA untuk pengerjaan PA yang lebih terorganisir.</p>
                         </div>
                     </div>
                 </div>
