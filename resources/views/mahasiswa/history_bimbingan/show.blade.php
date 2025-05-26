@@ -3,7 +3,7 @@
 @section('title', 'Detail History Bimbingan')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid py-4 mt-4">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
         <a href="{{ route('mahasiswa.history-bimbingan.index') }}" class="btn btn-secondary btn-sm">

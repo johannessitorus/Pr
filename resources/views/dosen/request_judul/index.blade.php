@@ -13,13 +13,13 @@
 
     {{-- Form Filter Status (Opsional) --}}
     <form method="GET" action="{{ route('dosen.request-judul.index') }}" class="mb-3">
-        <div class="row g-2">
+        <div class="row g-2 align-items-center">
             <div class="col-md-3">
-                <select name="status" class="form-select form-select-sm">
+                <select name="status" id="status_filter" class="form-select form-select-sm">
                     <option value="pending" {{ $filterStatus == 'pending' ? 'selected' : '' }}>Pending</option>
                     <option value="approved" {{ $filterStatus == 'approved' ? 'selected' : '' }}>Approved</option>
                     <option value="rejected" {{ $filterStatus == 'rejected' ? 'selected' : '' }}>Rejected</option>
-                    <option value="" {{ $filterStatus == '' ? 'selected' : '' }}>Semua Status</option>
+                    <option value="" {{ ($filterStatus ?? '') == '' ? 'selected' : '' }}>Semua Status</option>
                 </select>
             </div>
             <div class="col-md-2">
@@ -33,7 +33,7 @@
         <div class="card-body">
             @if($requests->count() > 0)
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover align-middle">
                         <thead>
                             <tr>
                                 <th scope="col">No.</th>

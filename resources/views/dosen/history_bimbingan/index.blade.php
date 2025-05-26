@@ -3,13 +3,13 @@
 @section('title', 'Management History Bimbingan')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid py-4 mt-5">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
     </div>
 
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-3 ">
             <h6 class="m-0 font-weight-bold text-primary">Daftar History Bimbingan Mahasiswa</h6>
         </div>
         <div class="card-body">
@@ -96,21 +96,28 @@
                                         {{ ucfirst(str_replace('_', ' ', $history->status_kehadiran)) }}
                                     </span>
                                 </td>
+
                                 <td>
                                     <a href="{{ route('dosen.history-bimbingan.show', $history->id) }}" class="btn btn-sm btn-info mb-1" title="Lihat Detail">
                                         <i class="fas fa-eye"></i>
                                     </a>
+
                                     {{-- Tombol Edit hanya muncul jika status masih bisa diubah atau dosen perlu menambah catatan --}}
+                                    {{--
                                     @if(in_array($history->status_kehadiran, ['terjadwal', 'hadir']))
                                     <a href="{{ route('dosen.history-bimbingan.edit', $history->id) }}" class="btn btn-sm btn-warning mb-1" title="Proses/Update Status">
                                         <i class="fas fa-edit"></i>
                                     </a>
+                                    --}}
+                                    {{--
                                     @elseif($history->status_kehadiran == 'selesai' && empty($history->catatan_dosen))
                                      <a href="{{ route('dosen.history-bimbingan.edit', $history->id) }}" class="btn btn-sm btn-success mb-1" title="Tambah Catatan">
                                         <i class="fas fa-comment-dots"></i>
                                     </a>
                                     @endif
+                                     --}}
                                 </td>
+
                             </tr>
                             @endforeach
                         </tbody>
