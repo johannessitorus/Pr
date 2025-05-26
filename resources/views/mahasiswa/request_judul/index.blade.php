@@ -14,11 +14,16 @@
     @include('partials.alerts') {{-- Untuk menampilkan session success/error --}}
 
     <div class="card shadow-sm">
+        <div class="card-header">
+            Histori Submit Dokumen
+        </div>
+        <div class="card-body">
+    <div class="card shadow-sm">
         <div class="card-body">
             @if($requests->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-hover">
-                        <thead>
+                        <thead class="table-light">
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">Judul Diajukan</th>

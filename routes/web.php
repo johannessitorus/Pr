@@ -69,6 +69,9 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('dosen', AdminDosenController::class); // CRUD khusus Dosen (jika berbeda dari users)
         Route::resource('mahasiswa', AdminMahasiswaController::class); // CRUD khusus Mahasiswa (jika berbeda dari users)
         Route::resource('log-activities', AdminLogActivityController::class)->only(['index', 'show']);
+        Route::middleware(['mahasiswa'])->prefix('mahasiswa')->name('mahasiswa.')->group(function () {
+        Route::resource('dokumen', MahasiswaDokumenController::class); // Untuk mahasiswa submit dokumen
+    });
     });
 
     // --- Rute Spesifik Dosen ---

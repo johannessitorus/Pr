@@ -12,10 +12,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('mahasiswa_id')->constrained('mahasiswa')->onDelete('cascade');
             $table->foreignId('jenis_dokumen_id')->constrained('jenis_dokumen')->onDelete('restrict');
-            $table->string('nama_file', 255);
+            $table->string('nama_file_asli', 255);
+            $table->string('nama_file_unik', 255);
             $table->string('file_path', 255);
             $table->integer('versi')->default(1);
-            $table->text('catatan')->nullable();
+            $table->text('catatan_mahasiswa')->nullable();
             $table->enum('status_review', ['pending', 'approved', 'revision_needed'])->default('pending');
             $table->timestamp('uploaded_at')->useCurrent();
             $table->foreignId('reviewed_by')->nullable()->constrained('users')->onDelete('set null'); // Reviewer adalah user (dosen)

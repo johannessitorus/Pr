@@ -66,8 +66,9 @@ class DokumenController extends Controller
 
         if ($request->hasFile('file_dokumen')) {
             $file = $request->file('file_dokumen');
-            // $namaFileAsli = $file->getClientOriginalName(); // Tidak ada di skema DB
+            $namaFileAsli = $file->getClientOriginalName();
             $ekstensiFile = $file->getClientOriginalExtension();
+            $ukuranFile = $file->getSize();
 
             $jenisDokumen = JenisDokumen::find($request->jenis_dokumen_id);
             $jenisDokumenSlug = Str::slug($jenisDokumen->nama_jenis ?? 'dokumen');
@@ -85,10 +86,13 @@ class DokumenController extends Controller
                 DokumenProyekAkhir::create([
                     'mahasiswa_id' => $mahasiswa->id,
                     'jenis_dokumen_id' => $request->jenis_dokumen_id,
-                    'nama_file' => $namaFileUnik, // Sesuai skema DB (menyimpan nama unik)
+                    'nama_file_asli' => $namaFileAsli, // Perbaikan utama di sini
+                    'nama_file_unik' => $namaFileUnik,
                     'file_path' => $filePath,
+                    'ekstensi_file' => $ekstensiFile,
+                    'ukuran_file' => $ukuranFile,
                     'versi' => $versiBaru,
-                    'catatan' => $request->catatan_mahasiswa, // Sesuai skema DB
+                    'catatan_mahasiswa' => $request->catatan_mahasiswa,
                     'status_review' => 'pending',
                     'uploaded_at' => now(), // Eksplisit set uploaded_at
                     // 'reviewed_by', 'reviewed_at' akan null by default
@@ -110,11 +114,22 @@ class DokumenController extends Controller
     public function show(DokumenProyekAkhir $dokumenProyekAkhir)
     {
         $user = Auth::user();
-        if (!$user || !$user->mahasiswa || $dokumenProyekAkhir->mahasiswa_id !== $user->mahasiswa->id) {
-            abort(403, 'ANDA TIDAK DIIZINKAN MELIHAT DOKUMEN INI.');
+        $isMahasiswa = $user && $user->mahasiswa && $dokumenProyekAkhir->mahasiswa_id == $user->mahasiswa->id;
+        $isDosen = $user && $user->dosen && $dokumenProyekAkhir->mahasiswa && $dokumenProyekAkhir->mahasiswa->dosen_pembimbing_id == $user->dosen->id;
+        Log::info('Akses dokumen', [
+            'user_id' => $user->id ?? null,
+            'user_mahasiswa_id' => $user->mahasiswa->id ?? null,
+            'dokumen_mahasiswa_id' => $dokumenProyekAkhir->mahasiswa_id,
+            'isMahasiswa' => $isMahasiswa,
+            'isDosen' => $isDosen,
+            'dokumen_id' => $dokumenProyekAkhir->id,
+        ]);
+        if (!$isMahasiswa && !$isDosen) {
+            return redirect()->route('mahasiswa.dokumen.index')
+                             ->with('error', 'Anda tidak memiliki izin untuk mengakses dokumen ini.');
         }
 
-        $dokumenProyekAkhir->load(['jenisDokumen', 'reviewer.user']);
+        $dokumenProyekAkhir->load(['jenisDokumen', 'reviewer.user', 'mahasiswa.user']);
         return view('mahasiswa.dokumen.show', compact('dokumenProyekAkhir'));
     }
 
