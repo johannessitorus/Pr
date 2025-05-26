@@ -86,7 +86,7 @@ class DokumenController extends Controller
                 DokumenProyekAkhir::create([
                     'mahasiswa_id' => $mahasiswa->id,
                     'jenis_dokumen_id' => $request->jenis_dokumen_id,
-                    'nama_file_asli' => $namaFileAsli, // Perbaikan utama di sini
+                    'nama_file' => $namaFileAsli,
                     'nama_file_unik' => $namaFileUnik,
                     'file_path' => $filePath,
                     'ekstensi_file' => $ekstensiFile,

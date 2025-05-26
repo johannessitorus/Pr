@@ -21,15 +21,15 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <strong class="d-block">Nama Mahasiswa:</strong>
-                    <span>{{ $request->mahasiswa->user->name ?? 'N/A' }}</span>
+                    <span>{{ $requestJudul->mahasiswa->user->name ?? 'N/A' }}</span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <strong class="d-block">NIM:</strong>
-                    <span>{{ $request->mahasiswa->nim ?? 'N/A' }}</span>
+                    <span>{{ $requestJudul->mahasiswa->nim ?? 'N/A' }}</span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <strong class="d-block">Program Studi:</strong>
-                    <span>{{ $request->mahasiswa->prodi->nama_prodi ?? 'N/A' }}</span>
+                    <span>{{ $requestJudul->mahasiswa->prodi->nama_prodi ?? 'N/A' }}</span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <strong class="d-block">Tanggal Pengajuan:</strong>
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    
+
 </div>
 @endsection
 
