@@ -16,6 +16,11 @@
 
     @include('partials.alerts')
 
+    <div class="card shadow-sm">
+        <div class="card-header">
+            Histori Submit Dokumen
+        </div>
+        <div class="card-body">
     @if(Auth::user()->mahasiswa && !Auth::user()->mahasiswa->dosen_pembimbing_id)
         <div class="alert alert-warning">
             Anda belum memiliki dosen pembimbing yang ditetapkan. Anda baru bisa mengajukan bimbingan setelah dosen pembimbing Anda ditentukan (biasanya setelah judul proyek akhir Anda disetujui).
@@ -27,9 +32,9 @@
             @if($requests->count() > 0)
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
-                        <thead>
+                        <thead class="table-light">
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No.</th>
                                 <th scope="col">Dosen Pembimbing</th>
                                 <th scope="col">Tgl & Jam Usulan</th>
                                 <th scope="col">Topik</th>

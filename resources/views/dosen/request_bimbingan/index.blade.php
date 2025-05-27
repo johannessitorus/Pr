@@ -38,7 +38,7 @@
                     <table class="table table-hover align-middle">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No.</th>
                                 <th scope="col">Nama Mahasiswa</th>
                                 <th scope="col">NIM</th>
                                 <th scope="col">Tgl & Jam Usulan Mhs</th>
@@ -51,7 +51,7 @@
                         <tbody>
                             @foreach ($requests as $index => $request)
                                 <tr>
-                                    <th scope="row">{{ $requests->firstItem() + $index }}</th>
+                                    <th scope="row">{{ $requests->firstItem() + $index }}.</th>
                                     <td>{{ $request->mahasiswa->user->name ?? 'N/A' }}</td>
                                     <td>{{ $request->mahasiswa->nim ?? 'N/A' }}</td>
                                     <td>

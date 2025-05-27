@@ -3,7 +3,7 @@
 @section('title', 'Detail Request Bimbingan')
 
 @section('content')
-<div class="container py-4">
+<div class="container py-4 mt-4">
     <div class="row justify-content-center">
         <div class="col-lg-9">
             <div class="d-flex justify-content-between align-items-center mb-3">

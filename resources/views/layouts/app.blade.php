@@ -79,7 +79,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm fixed-top">
             <div class="container">
-                <a class="navbar-brand navbar-brand-custom" type="image/jpg" href="{{ asset('public/foto/sipa.jpg') }}">
+                <a class="navbar-brand navbar-brand-custom" type="image/jpg" href="{{ url('/') }}">
                     <img src="{{ asset('foto/sipa.jpg') }}" style="height: 30px; width: auto; vertical-align: middle;">
                     {{ config('', 'SIPA') }}
                 </a>
@@ -151,9 +151,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">
+                                    {{-- Code untuk membuat profil jika diperlukan --}}
+                                    {{--<a class="dropdown-item" href="#">
                                         <i class="fas fa-user-cog me-2"></i> Profil Saya
-                                    </a>
+                                    </a>--}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

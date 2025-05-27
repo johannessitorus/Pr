@@ -3,7 +3,7 @@
 @section('title', 'Detail History Bimbingan')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid py-4 mt-5">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
         <a href="{{ route('dosen.history-bimbingan.index', ['status_filter' => $historyBimbingan->status_kehadiran]) }}" class="btn btn-secondary btn-sm">
@@ -19,9 +19,7 @@
             </h6>
             {{-- Tombol Edit hanya muncul jika status masih bisa diubah atau dosen perlu menambah catatan --}}
             @if(in_array($historyBimbingan->status_kehadiran, ['terjadwal', 'hadir']))
-            <a href="{{ route('dosen.history-bimbingan.edit', $historyBimbingan->id) }}" class="btn btn-warning btn-sm">
-                <i class="fas fa-edit"></i> Proses/Update Status
-            </a>
+
             @elseif($historyBimbingan->status_kehadiran == 'selesai' && empty($historyBimbingan->catatan_dosen))
              <a href="{{ route('dosen.history-bimbingan.edit', $historyBimbingan->id) }}" class="btn btn-success btn-sm">
                 <i class="fas fa-comment-dots"></i> Tambah Catatan

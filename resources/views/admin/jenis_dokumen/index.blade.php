@@ -27,7 +27,7 @@
                     <table class="table table-hover align-middle">
                         <thead class="table-light">
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No.</th>
                                 <th scope="col">Nama Jenis Dokumen</th>
                                 <th scope="col">Deskripsi</th>
                                 <th scope="col" class="text-center">Aksi</th>
@@ -36,7 +36,7 @@
                         <tbody>
                             @foreach($jenisDokumens as $index => $jenis)
                                 <tr>
-                                    <td>{{ $jenisDokumens->firstItem() + $index }}</td>
+                                    <td>{{ $jenisDokumens->firstItem() + $index }}.</td>
                                     <td>{{ $jenis->nama_jenis }}</td>
                                     <td>{{ Str::limit($jenis->deskripsi, 80, '...') ?? '-' }}</td>
                                     <td class="text-center">

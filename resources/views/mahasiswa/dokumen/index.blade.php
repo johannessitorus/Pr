@@ -18,6 +18,8 @@
             Histori Submit Dokumen
         </div>
         <div class="card-body">
+            <div class="card shadow-sm">
+        <div class="card-body">
             @if($dokumens->isEmpty())
                 <div class="alert alert-info mb-0">
                     Anda belum pernah mensubmit dokumen apapun.

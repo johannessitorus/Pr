@@ -13,13 +13,13 @@
 
     {{-- Form Filter Status (Opsional) --}}
     <form method="GET" action="{{ route('dosen.request-judul.index') }}" class="mb-3">
-        <div class="row g-2">
+        <div class="row g-2 align-items-center">
             <div class="col-md-3">
-                <select name="status" class="form-select form-select-sm">
+                <select name="status" id="status_filter" class="form-select form-select-sm">
                     <option value="pending" {{ $filterStatus == 'pending' ? 'selected' : '' }}>Pending</option>
                     <option value="approved" {{ $filterStatus == 'approved' ? 'selected' : '' }}>Approved</option>
                     <option value="rejected" {{ $filterStatus == 'rejected' ? 'selected' : '' }}>Rejected</option>
-                    <option value="" {{ $filterStatus == '' ? 'selected' : '' }}>Semua Status</option>
+                    <option value="" {{ ($filterStatus ?? '') == '' ? 'selected' : '' }}>Semua Status</option>
                 </select>
             </div>
             <div class="col-md-2">
@@ -33,10 +33,10 @@
         <div class="card-body">
             @if($requests->count() > 0)
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover align-middle">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No.</th>
                                 <th scope="col">Nama Mahasiswa</th>
                                 <th scope="col">NIM</th>
                                 <th scope="col">Prodi</th>
@@ -49,7 +49,7 @@
                         <tbody>
                             @foreach ($requests as $index => $request)
                                 <tr>
-                                    <th scope="row">{{ $requests->firstItem() + $index }}</th>
+                                    <th scope="row">{{ $requests->firstItem() + $index }}.</th>
                                     <td>{{ $request->mahasiswa->user->name ?? 'N/A' }}</td>
                                     <td>{{ $request->mahasiswa->nim ?? 'N/A' }}</td>
                                     <td>{{ $request->mahasiswa->prodi->nama_prodi ?? 'N/A' }}</td>
