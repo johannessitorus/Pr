@@ -86,7 +86,7 @@ class DokumenController extends Controller
                 DokumenProyekAkhir::create([
                     'mahasiswa_id' => $mahasiswa->id,
                     'jenis_dokumen_id' => $request->jenis_dokumen_id,
-                    'nama_file' => $namaFileAsli,
+                    'nama_file_asli' => $namaFileAsli,
                     'nama_file_unik' => $namaFileUnik,
                     'file_path' => $filePath,
                     'ekstensi_file' => $ekstensiFile,
@@ -209,7 +209,7 @@ class DokumenController extends Controller
                 if ($dokumenProyekAkhir->file_path && Storage::disk('public')->exists($dokumenProyekAkhir->file_path)) {
                     Storage::disk('public')->delete($dokumenProyekAkhir->file_path);
                 }
-                $updateData['nama_file'] = $namaFileUnikBaru;
+                $updateData['nama_file_asli'] = $namaFileUnikBaru;
                 $updateData['file_path'] = $filePathBaru;
                 // Versi baru: increment dari versi terakhir untuk jenis dokumen ini
                 // atau bisa juga dari versi dokumen yang sedang diedit + 1
