@@ -1,4 +1,4 @@
-@extends('layouts.app') {{-- Atau layout spesifik mahasiswa jika ada, misal: layouts.mahasiswa --}}
+php @extends('layouts.app') {{-- Atau layout spesifik mahasiswa jika ada, misal: layouts.mahasiswa --}}
 
 @section('title', 'Daftar Dokumen Proyek Akhir Saya')
 
